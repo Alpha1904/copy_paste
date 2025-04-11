@@ -3,10 +3,27 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "go": "nodemon ./todo_json/app.js"
   },
-  "start:a": "node ./index.js",
   "author": "alpha",
   "license": "ISC",
+  "dependencies": {
+    "body-parser": "^2.2.0",
+    "express": "^5.1.0",
+    "mysql2": "^3.14.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.9"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Alpha1904/copy_paste.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/Alpha1904/copy_paste/issues"
+  },
+  "homepage": "https://github.com/Alpha1904/copy_paste#readme",
   "description": ""
 }

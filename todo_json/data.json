@@ -1,0 +1,44 @@
+[
+  {
+    "id": 0,
+    "title": "Learn MySQL queries",
+    "description": "Practice JOIN operations",
+    "createAt": "2025-04-09T04:29:59.367Z"
+  },
+  {
+    "id": 1,
+    "title": "Plan weekend trip",
+    "description": "Book hotels and tickets",
+    "createAt": "2025-04-09T04:31:13.728Z"
+  },
+  {
+    "id": 3,
+    "title": "Read Node.js documentation",
+    "description": "Study middleware concepts",
+    "createAt": "2025-04-09T04:31:45.308Z"
+  },
+  {
+    "id": 4,
+    "title": "Go to gym",
+    "description": "Workout for 1 hour",
+    "createAt": "2025-04-09T04:31:56.781Z"
+  },
+  {
+    "id": 5,
+    "title": "Call mom",
+    "description": "Wish her happy birthday",
+    "createAt": "2025-04-09T04:32:18.586Z"
+  },
+  {
+    "id": 6,
+    "title": "Finish Express project",
+    "description": "Complete the todo list API",
+    "createAt": "2025-04-09T04:33:16.966Z"
+  },
+  {
+    "id": 7,
+    "title": "Buy groceries",
+    "description": "Milk, eggs, bread, fruits",
+    "createAt": "2025-04-09T04:34:03.341Z"
+  }
+]

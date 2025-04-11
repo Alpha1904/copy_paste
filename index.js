@@ -1,95 +1,18 @@
-// import funn, * as fun from './function.js';
-
-// // console.log(fun.sum(2,3), funn.s);
-
-// const path = require('node:path');
-
-// console.log(path.resolve(__dirname));
-
-//  const file = path.parse(__filename);
-//  console.log(file.dir);
-
-// import path from 'node:path';
-// import { fileURLToPath } from 'node:url';
-
-// const __filename = fileURLToPath(import.meta.url);
-
-// console.log(path.basename(__filename));
-// // const path = require('node:path'); // This line is commented out and can be removed
-// console.log("test");
+//--------------- fs/promises ----------------
 
 
+// const { createReadStream, createWriteStream } = require('fs');
+// const path = require('path');
 
-//  const { readFile, writeFile } = require('fs/promises');
-
-// const first = readFileSync('./content/first.txt', 'utf8');
-// const second = readFileSync('./content/second.txt', 'utf8');
-
-// writeFileSync(
-//     './content/result-sync.txt',
-//     `Here is the result : ${first}, ${second}`,
-//     { flag: 'a' }
-//     )
+// const first = path.dirname(__filename);
+// console.log(first);
 
 
-// readFile(
-//     './content/first.txt',
-//     'utf8',
-//     (err, result)=>{
-//         if(err){
-//             console.log(err);
-//             return;
-//         }
-//         readFile(
-//             './content/second.txt',
-//             'utf8',
-//             (err, result)=>{
-//                 if(err){
-//                     console.log(err);
-//                     return;
-//                 }
-//                 writeFile(
-//                     './content/result-async.txt',
-//                     `Here is the result : ${result}`,
-//                     (err, result)=>{
-//                         if(err){
-//                             console.log(err);
-//                             return;
-//                         }
-//                         console.log(result);
-//                     }
-//                 )
-
-//             }
-//         )
-//     }
-// )
-
-//const { readFile, writeFile } = require('fs/promises');
-
-
-// const fileRead = async ()=>{
-//     try{
-//         const first = await readFile('./content/first.txt', 'utf8');
-//         const second = await readFile('./content/second.txt', 'utf8');
-//         const result = await writeFile(
-//             './content/result-prom.txt',
-//             `Here is the result : ${first}, ${second}`,
-//             { flag: 'a' }
-//             )
-//             console.log(result);
-//     }catch(error){
-//         console.log(error);
-//     }
-// };
-const { createReadStream, createWriteStream } = require('fs');
-const path = require('path');
-
-const readableStream = createReadStream('./content/first.txt', { encoding: 'utf-8' });
-const writableStream = createWriteStream('./content/copied.txt');
-readableStream.on('data', (chunk) => {
-  writableStream.write(chunk);
-});
+// const readableStream = createReadStream('./content/first.txt', { encoding: 'utf-8' });
+// const writableStream = createWriteStream('./content/copied.txt');
+// readableStream.on('data', (chunk) => {
+//   writableStream.write(chunk);
+// });
 
 // readableStream.on('end', () => {
 //   console.log('Finished reading the file.');
@@ -104,3 +27,96 @@ readableStream.on('data', (chunk) => {
 
 
 // const writableStream = createWriteStream('./content/result-stream.txt');
+
+
+
+
+
+
+
+
+
+
+
+
+// const http = require('http');
+
+
+// const server = http.createServer((req, res) => {
+//   res.writeHead(200, { 'Content-Type': 'text/plain' });
+//   res.end('Hello, World!');
+// });
+
+
+// server.listen(3333, () => {
+//   console.log('Server running at http://localhost:3333');
+// });
+
+
+
+
+
+
+
+
+
+
+
+const fs = require('fs');
+const path = require('path');
+
+const create = ()=>{
+  !fs.existsSync("./newFolder/subFolder") && fs.mkdir("./newFolder/subFolder", { recursive:true }, (err)=>{
+    if(err) throw err;
+    console.log("create folder sucess")
+  })
+}
+
+const del = ()=>{
+  fs.existsSync("./noName/subFolder") && fs.rmdir("./noName/subFolder",(err) => {
+    if (err) throw err;
+    console.log("dossier supprimé avec succès");
+});
+}
+
+const edit = ()=>{
+  fs.existsSync("./noName") && fs.rename("./noNames/",(err) => {
+    if (err) throw err;
+    console.log("Edit folder sucess");
+  });
+};
+
+
+const move = ()=>{
+  fs.existsSync("./newFolder") && fs.rename("./newFolder/subFolder","./noName/subFolder",(err) => {
+    if (err) throw err;
+    console.log("Edit folder sucess");
+  });
+};
+
+const read = (folderPath)=>{
+  fs.readdir(folderPath, {withFileTypes:true}, (err, data) => {
+  if (err) throw err;
+
+  for (const el of data){
+    if (el.isDirectory()) { 
+      console.log("This a folder", el.name)
+      read(path.join(folderPath, el.name))
+    } else {
+      console.log("This a file", el.name)
+    }
+  }
+})
+}
+move();
+//read("./newFolder");
+
+// fs.writeFile("newFolder/demo.txt", "Just for fun purpose", { flag: 'a' }, (err) => {
+//   if (err) throw err;
+//    });
+
+//    fs.appendFile("newFolder/demo.txt", " ertha3h 35h qh  54hy4qa5h  5h", {encoding : 'utf8'}, (err, data) => {
+//     if (err) throw err;
+//     console.log(data);
+//   });
+//   fs.appendFileSync
