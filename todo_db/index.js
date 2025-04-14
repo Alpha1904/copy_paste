@@ -1,6 +1,12 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const db = require('./db');
+const mysql = require('mysql2/promise');
+const db = mysql.createPool({
+  host: 'localhost',
+  user: 'root',
+  password: '',
+  database: 'todos'
+});
 
 const app = express();
 app.use(bodyParser.json());

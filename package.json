@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "go": "nodemon ./todo_json/app.js"
+    "go": "nodemon ./arch/app.js"
   },
   "author": "alpha",
   "license": "ISC",
