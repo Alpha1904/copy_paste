@@ -12,22 +12,25 @@ const getAllTasks = async () => {
   return tasks;
 };
 
-const createTask = async (title, description) => {
+const createTask = async (title, description, dueDate, completed) => {
+
   const [result] = await db.query(
-    'INSERT INTO tasks (title, description) VALUES (?, ?)',
-    [title, description]
+    'INSERT INTO tasks (title, description, dueDate, completed) VALUES (?, ?, ?, ?)',
+    [title, description, dueDate, completed]
   );
   return {
     id: result.insertId,
     title,
-    description
+    description,
+    dueDate,
+    completed: completed || false, 
   };
 };
 
-const updateTask = async (id, title, description) => {
+const updateTask = async (id, title, description, dueDate, completed) => {
   const [result] = await db.query(
-    'UPDATE tasks SET title = ?, description = ? WHERE id = ?',
-    [title, description, id]
+    'UPDATE tasks SET title = ?, description = ?, dueDate = ?, completed = ? WHERE id = ?',
+    [title, description, dueDate, completed, id]
   );
   return result;
 };

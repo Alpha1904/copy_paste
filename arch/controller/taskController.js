@@ -10,14 +10,10 @@ const getAllTasks = async (req, res) => {
 };
 
 const createTask = async (req, res) => {
-  const { title, description } = req.body;
-
-  if (!title) {
-    return res.status(400).json({ error: 'Le titre est obligatoire' });
-  }
+  const { title, description, dueDate, completed } = req.body;
 
   try {
-    const task = await taskModel.createTask(title, description);
+    const task = await taskModel.createTask(title, description, dueDate, completed);
     res.status(201).json(task);
   } catch (err) {
     res.status(500).json({ error: err.message });
@@ -26,16 +22,16 @@ const createTask = async (req, res) => {
 
 const updateTask = async (req, res) => {
   const { id } = req.params;
-  const { title, description } = req.body;
+  const { title, description, completed, dueDate } = req.body;
 
   try {
-    const result = await taskModel.updateTask(id, title, description);
+    const result = await taskModel.updateTask(id, title, description, dueDate, completed);
 
     if (result.affectedRows === 0) {
       return res.status(404).json({ error: 'Tâche introuvable' });
     }
 
-    res.json({ id, title, description });
+    res.json({ id, title, description, completed, dueDate });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
